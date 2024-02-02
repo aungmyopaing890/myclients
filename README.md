@@ -1,6 +1,8 @@
 # My Clients
 
 
+<a href="https://drive.google.com/file/d/1r_U3AK9k5qb4Tf3eLbWql5WVs-BEG5my/view?usp=sharing">Demo Apk</a>  
+
 <h1>Project Time</h1>
 Time  : MMT<br>
 Development Start : Feb 2 2024 11:00 AM<br>
@@ -8,6 +10,11 @@ Development End   : Feb 2 2024 06:30 PM <br><br>
 Documation and screenstoots<br>
 Start : Feb 2 2024 06:30 AM<br>
 End   : Feb 2 2024 09:30 PM <br><br>
+
+<h1>Project Structure</h1>
+- MVC pattern and modules base are used for assingment<br>
+- provier, repository and services  <br><br>
+
 
 <h1>Project Notes</h1>
  
@@ -29,9 +36,7 @@ it's fine. <br><br>
 
 I didn't have much time for assigment because I am in project lunch in my company so I did my best in this time.<br>
 This project is not that much hard for me. If I have more time, I can add more function. <br><br>
-
 Features I haven't done<br><br>
-
 - language support <br>
 - recent search <br>
 
