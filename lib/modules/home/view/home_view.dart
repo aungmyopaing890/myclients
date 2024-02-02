@@ -5,14 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:myclients/modules/client/core/provider/client_provider.dart';
 import 'package:myclients/modules/client/core/repository/client_repository.dart';
-import 'package:myclients/modules/client/core/view_object/client.dart';
-import 'package:myclients/modules/client/view/client_table_list_view.dart';
-import 'package:myclients/modules/client/view/widgets/client_create_dialog_view.dart';
-import 'package:myclients/modules/client/view/widgets/client_search_widget.dart';
-import 'package:myclients/modules/common/core/utils/dimesions.dart';
-import 'package:myclients/modules/common/views/button_widget_with_round_corner.dart';
 import 'package:myclients/modules/common/views/dialog/confirm_dialog_view.dart';
 import 'package:myclients/config/master_colors.dart';
+import 'package:myclients/modules/common/views/responsive.dart';
+import 'package:myclients/modules/home/widget/home_desktop_view.dart';
+import 'package:myclients/modules/home/widget/home_mobile_view.dart';
+import 'package:myclients/modules/home/widget/home_tablet_view.dart';
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -78,59 +76,16 @@ class _HomeScreenState extends State<HomeScreen>
           key: scaffoldKey,
           backgroundColor: MasterColors.appBackgorundColor,
           body: SingleChildScrollView(
-            child: Container(
-              padding: EdgeInsets.all(Dimensions.height30(context)),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                      margin:
-                          EdgeInsets.only(bottom: Dimensions.height10(context)),
-                      height: Dimensions.height30(context),
-                      child: Text(
-                        "Clients",
-                        style: Theme.of(context)
-                            .textTheme
-                            .headlineMedium!
-                            .copyWith(fontWeight: FontWeight.w700),
-                      )),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      ClientSearchWidget(
-                        searchController: searchController,
-                        funSetstate: () {
-                          setState(() {});
-                        },
-                      ),
-                      ButtonWidgetRoundCorner(
-                          colorData: MasterColors.mainColor,
-                          hasShadow: false,
-                          width: Dimensions.height40(context) * 3,
-                          height: Dimensions.height40(context),
-                          titleText: "Create new client",
-                          titleTextColor: MasterColors.white,
-                          onPressed: () {
-                            // clientProvider.insertJson();
-                            showDialog<dynamic>(
-                                context: context,
-                                builder: (BuildContext context) {
-                                  return ClientDialogView(
-                                    onPressed: (ClientVO client) {
-                                      clientProvider.insert(client);
-                                    },
-                                  );
-                                });
-                          }),
-                    ],
-                  ),
-                  ClientTableView(
-                    searchController: searchController,
-                    isSearch: searchController.text != "",
-                  )
-                ],
-              ),
-            ),
+            child: Responsive(
+                desktop: HomeDesktopView(
+                  searchController: searchController,
+                ),
+                mobile: HomeMobileView(
+                  searchController: searchController,
+                ),
+                tablet: HomeTabletView(
+                  searchController: searchController,
+                )),
           ),
         ),
       ),

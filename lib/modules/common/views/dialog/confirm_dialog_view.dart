@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:myclients/config/master_colors.dart';
 import 'package:myclients/config/master_config.dart';
 import 'package:myclients/modules/common/core/utils/dimesions.dart';
+import 'package:myclients/modules/common/core/utils/utils.dart';
 import 'package:myclients/modules/common/views/button_widget_with_round_corner.dart';
 
 class ConfirmDialogView extends StatefulWidget {
@@ -63,58 +64,66 @@ class NewDialog extends StatelessWidget {
       backgroundColor: MasterColors.white,
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(MasterConfig.borderRadious)),
-      child: Padding(
-        padding: EdgeInsets.all(Dimensions.height15(context)),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            headerWidget,
-            if (widget.description != null)
-              Container(
-                alignment: Alignment.center,
-                padding: EdgeInsets.only(
-                    top: Dimensions.height10(context),
-                    bottom: Dimensions.height15(context)),
-                child: Text(
-                  widget.description!,
-                  maxLines: 4,
-                  overflow: TextOverflow.ellipsis,
-                  textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                        color: MasterColors.textColor3,
-                        fontWeight: FontWeight.w400,
-                      ),
+      child: SizedBox(
+        width: Dimensions.screenWidth(context) * 0.3,
+        child: Padding(
+          padding: EdgeInsets.all(Dimensions.height15(context)),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              headerWidget,
+              if (widget.description != null)
+                Container(
+                  alignment: Alignment.center,
+                  padding: EdgeInsets.only(
+                      top: Dimensions.height10(context),
+                      bottom: Dimensions.height15(context)),
+                  child: Text(
+                    widget.description!,
+                    maxLines: 4,
+                    overflow: TextOverflow.ellipsis,
+                    textAlign: TextAlign.center,
+                    style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                          color: MasterColors.textColor3,
+                          fontWeight: FontWeight.w400,
+                        ),
+                  ),
                 ),
-              ),
-            Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
-              ButtonWidgetRoundCorner(
-                  colorData: Colors.grey[50]!,
-                  hasShadow: false,
-                  width: Dimensions.height40(context) * 3,
-                  height: Dimensions.height30(context),
-                  titleText: widget.leftButtonText!,
-                  titleTextColor: MasterColors.mainColor,
-                  outlineColor: MasterColors.mainColor,
-                  hasBorder: true,
-                  onPressed: () {
-                    Navigator.pop(context);
-                  }),
-              SizedBox(
-                width: Dimensions.height10(context),
-              ),
-              ButtonWidgetRoundCorner(
-                  colorData: MasterColors.mainColor,
-                  hasShadow: false,
-                  width: Dimensions.height40(context) * 3,
-                  height: Dimensions.height30(context),
-                  titleText: widget.rightButtonText!,
-                  titleTextColor: MasterColors.white,
-                  onPressed: () {
-                    widget.onAgreeTap!();
-                  }),
-            ])
-          ],
+              Row(
+                  mainAxisAlignment: Utils.isDesktop(context)
+                      ? MainAxisAlignment.center
+                      : MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    ButtonWidgetRoundCorner(
+                        colorData: Colors.grey[50]!,
+                        hasShadow: false,
+                        width: Dimensions.height40(context) * 2.5,
+                        height: Dimensions.height30(context),
+                        titleText: widget.leftButtonText!,
+                        titleTextColor: MasterColors.mainColor,
+                        outlineColor: MasterColors.mainColor,
+                        hasBorder: true,
+                        onPressed: () {
+                          Navigator.pop(context);
+                        }),
+                    if (Utils.isDesktop(context))
+                      SizedBox(
+                        width: Dimensions.height10(context),
+                      ),
+                    ButtonWidgetRoundCorner(
+                        colorData: MasterColors.mainColor,
+                        hasShadow: false,
+                        width: Dimensions.height40(context) * 2.3,
+                        height: Dimensions.height30(context),
+                        titleText: widget.rightButtonText!,
+                        titleTextColor: MasterColors.white,
+                        onPressed: () {
+                          widget.onAgreeTap!();
+                        }),
+                  ])
+            ],
+          ),
         ),
       ),
     );

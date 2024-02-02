@@ -245,12 +245,13 @@ class _ProcessBarWidget extends StatelessWidget {
           name: "Personal Details",
           isActive: isPersonalDetails,
         ),
-        SizedBox(
-          width: Dimensions.screenWidth(context) * 0.1,
-          child: Divider(
-            color: MasterColors.secondary30,
+        if (Utils.isDesktop(context))
+          SizedBox(
+            width: Dimensions.screenWidth(context) * 0.1,
+            child: Divider(
+              color: MasterColors.secondary30,
+            ),
           ),
-        ),
         _ProcessItemWidget(
           index: "2",
           name: "Contact Details",

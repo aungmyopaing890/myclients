@@ -8,9 +8,13 @@ import 'package:provider/provider.dart';
 
 class ClientSearchWidget extends StatefulWidget {
   const ClientSearchWidget(
-      {super.key, required this.searchController, required this.funSetstate});
+      {super.key,
+      required this.searchController,
+      required this.funSetstate,
+      this.width});
   final TextEditingController searchController;
   final Function funSetstate;
+  final double? width;
 
   @override
   State<ClientSearchWidget> createState() => _ClientSearchWidgetState();
@@ -23,7 +27,7 @@ class _ClientSearchWidgetState extends State<ClientSearchWidget> {
   Widget build(BuildContext context) {
     final ClientProvider provider = Provider.of<ClientProvider>(context);
     return Container(
-      width: Dimensions.screenWidth(context) * 0.3,
+      width: widget.width ?? Dimensions.screenWidth(context) * 0.3,
       alignment: Alignment.center,
       padding:
           EdgeInsets.symmetric(horizontal: Dimensions.height10(context) / 2),

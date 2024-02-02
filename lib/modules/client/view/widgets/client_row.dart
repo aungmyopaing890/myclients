@@ -11,7 +11,12 @@ import 'package:provider/provider.dart';
 class ClientRowWidget extends StatelessWidget {
   final ClientVO client;
   final bool isLast;
-  const ClientRowWidget({Key? key, required this.client, required this.isLast})
+  final double horizontalPadding;
+  const ClientRowWidget(
+      {Key? key,
+      required this.client,
+      required this.isLast,
+      required this.horizontalPadding})
       : super(key: key);
 
   @override
@@ -22,7 +27,7 @@ class ClientRowWidget extends StatelessWidget {
       padding: EdgeInsets.symmetric(
           vertical: Dimensions.height20(context),
           horizontal: Dimensions.height10(context)),
-      margin: EdgeInsets.symmetric(horizontal: Dimensions.height10(context)),
+      margin: EdgeInsets.symmetric(horizontal: horizontalPadding),
       decoration: BoxDecoration(
         borderRadius: isLast
             ? const BorderRadius.only(

@@ -91,3 +91,81 @@ class _ButtonWidgetRoundCornerState extends State<ButtonWidgetRoundCorner> {
     );
   }
 }
+
+class IconButtonWidgetRoundCorner extends StatefulWidget {
+  const IconButtonWidgetRoundCorner(
+      {super.key,
+      this.onPressed,
+      required this.iconData,
+      this.colorData,
+      this.width,
+      this.height,
+      this.gradient,
+      this.hasBorder = false,
+      this.hasShadow = false,
+      this.outlineColor});
+
+  final Function? onPressed;
+
+  final Color? colorData;
+  final double? width;
+  final double? height;
+  final bool hasBorder;
+  final Gradient? gradient;
+  final bool hasShadow;
+  final IconData iconData;
+  final Color? outlineColor;
+
+  @override
+  State<IconButtonWidgetRoundCorner> createState() =>
+      _IconButtonWidgetRoundCornerState();
+}
+
+class _IconButtonWidgetRoundCornerState
+    extends State<IconButtonWidgetRoundCorner> {
+  Color? _color;
+  Color? _outlineColor;
+
+  @override
+  Widget build(BuildContext context) {
+    _color = widget.colorData;
+
+    // _titleTextColor ??= MasterColors.baseColor;
+
+    _color ??= const Color(0xFFEF5835);
+    _outlineColor = widget.outlineColor ?? _color;
+    return Container(
+      alignment: Alignment.center,
+      width: widget.width,
+      height: widget.height ?? 46,
+      decoration: BoxDecoration(
+        borderRadius: const BorderRadius.all(
+          Radius.circular(5),
+        ),
+        color: _color,
+      ),
+      child: Material(
+        color: _color,
+        type: MaterialType.card,
+        clipBehavior: Clip.antiAlias,
+        shape: RoundedRectangleBorder(
+            side: widget.hasBorder
+                ? BorderSide(color: _outlineColor!)
+                : BorderSide.none,
+            borderRadius: const BorderRadius.all(
+              Radius.circular(5),
+            )),
+        child: InkWell(
+          onTap: widget.onPressed as void Function()?,
+          highlightColor: MasterColors.iconColor.withOpacity(0.2),
+          child: Center(
+            child: SizedBox(
+              width: double.infinity,
+              child: Icon(widget.iconData),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}

@@ -11,8 +11,11 @@ class ClientTableView extends StatefulWidget {
     Key? key,
     required this.isSearch,
     required this.searchController,
+    this.horizontalPadding,
   }) : super(key: key);
   final bool isSearch;
+  final double? horizontalPadding;
+
   final TextEditingController searchController;
 
   @override
@@ -33,7 +36,10 @@ class _ClientTableViewState extends State<ClientTableView> {
       padding: EdgeInsets.symmetric(vertical: Dimensions.height20(context)),
       child: Column(
         children: [
-          const ClientTableTitle(),
+          ClientTableTitle(
+            horizontalPadding:
+                widget.horizontalPadding ?? Dimensions.height10(context),
+          ),
           Consumer<ClientProvider>(builder:
               (BuildContext context, ClientProvider pro, Widget? child) {
             return MediaQuery.removePadding(
@@ -49,6 +55,8 @@ class _ClientTableViewState extends State<ClientTableView> {
                         : pro.dataLength,
                     itemBuilder: (context, index) {
                       return ClientRowWidget(
+                        horizontalPadding: widget.horizontalPadding ??
+                            Dimensions.height10(context),
                         isLast: widget.searchController.text != ""
                             ? pro.searchDataLength == index + 1
                             : pro.dataLength == index + 1,
@@ -65,7 +73,9 @@ class _ClientTableViewState extends State<ClientTableView> {
 }
 
 class ClientTableTitle extends StatelessWidget {
-  const ClientTableTitle({super.key});
+  const ClientTableTitle({super.key, required this.horizontalPadding});
+
+  final double horizontalPadding;
 
   @override
   Widget build(BuildContext context) {
@@ -73,7 +83,7 @@ class ClientTableTitle extends StatelessWidget {
       padding: EdgeInsets.symmetric(
           vertical: Dimensions.height20(context),
           horizontal: Dimensions.height10(context)),
-      margin: EdgeInsets.symmetric(horizontal: Dimensions.height10(context)),
+      margin: EdgeInsets.symmetric(horizontal: horizontalPadding),
       decoration: BoxDecoration(
         borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(MasterConfig.borderRadious),
@@ -112,6 +122,18 @@ class ClientTableTitle extends StatelessWidget {
             alignment: Alignment.centerLeft,
             child: Text(
               "Email",
+              overflow: TextOverflow.ellipsis,
+              style: Theme.of(context)
+                  .textTheme
+                  .bodyLarge!
+                  .copyWith(fontWeight: FontWeight.w700),
+            ),
+          ),
+          Container(
+            width: Dimensions.screenWidth(context) * 0.15,
+            alignment: Alignment.centerLeft,
+            child: Text(
+              "Actions",
               overflow: TextOverflow.ellipsis,
               style: Theme.of(context)
                   .textTheme
