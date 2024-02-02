@@ -176,6 +176,7 @@ class _NewDialogState extends State<NewDialog> {
                                 lastName: lastname.text,
                                 phoneNumber: phoneNumber.text,
                                 email: email.text));
+                            context.pop();
                           }
                         }
                       })
