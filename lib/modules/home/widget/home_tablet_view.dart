@@ -31,7 +31,7 @@ class _HomeTabletViewState extends State<HomeTabletView> {
               margin: EdgeInsets.only(bottom: Dimensions.height10(context)),
               height: Dimensions.height30(context),
               child: Text(
-                "tablet",
+                "Clients",
                 style: Theme.of(context)
                     .textTheme
                     .headlineMedium!

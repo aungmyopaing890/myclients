@@ -8,7 +8,6 @@ import 'package:myclients/config/route/route_paths.dart';
 import 'package:myclients/modules/client/core/provider/client_provider.dart';
 import 'package:myclients/modules/client/core/repository/client_repository.dart';
 import 'package:myclients/modules/common/core/utils/dimesions.dart';
-import 'package:myclients/modules/language/core/app_localization.dart';
 import 'package:provider/provider.dart';
 
 class AppLoadingScreen extends StatefulWidget {
@@ -49,9 +48,13 @@ class _AppLoadingScreenState extends State<AppLoadingScreen>
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Container(
-                padding: EdgeInsets.symmetric(
-                    vertical: Dimensions.height10(context) / 2),
-                child: Text("app_name".tr),
+                padding: EdgeInsets.only(bottom: Dimensions.height10(context)),
+                width: Dimensions.height40(context) * 2.5,
+                height: Dimensions.height40(context) * 2.5,
+                child: Image.asset(
+                  "assets/logo.png",
+                  fit: BoxFit.contain,
+                ),
               ),
               SizedBox(
                 width: Dimensions.height40(context),
@@ -59,7 +62,7 @@ class _AppLoadingScreenState extends State<AppLoadingScreen>
                 child: const LinearProgressIndicator(
                     valueColor: AlwaysStoppedAnimation<Color>(Colors.black12),
                     backgroundColor: Colors.black12),
-              )
+              ),
             ],
           ),
         ),

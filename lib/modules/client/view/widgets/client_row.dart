@@ -48,7 +48,9 @@ class ClientRowWidget extends StatelessWidget {
             child: Text(
               client.name(),
               style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                  fontWeight: FontWeight.w700, color: MasterColors.textColor2),
+                  fontSize: Dimensions.font12(context),
+                  fontWeight: FontWeight.w700,
+                  color: MasterColors.textColor2),
               overflow: TextOverflow.ellipsis,
               textAlign: TextAlign.start,
             ),
@@ -58,10 +60,9 @@ class ClientRowWidget extends StatelessWidget {
             alignment: Alignment.centerLeft,
             child: Text(
               client.phoneNumber ?? "",
-              style: Theme.of(context)
-                  .textTheme
-                  .bodyLarge!
-                  .copyWith(fontWeight: FontWeight.w700),
+              style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                  fontSize: Dimensions.font12(context),
+                  fontWeight: FontWeight.w700),
               overflow: TextOverflow.ellipsis,
               textAlign: TextAlign.center,
             ),
@@ -71,10 +72,9 @@ class ClientRowWidget extends StatelessWidget {
             alignment: Alignment.centerLeft,
             child: Text(
               client.email ?? "",
-              style: Theme.of(context)
-                  .textTheme
-                  .bodyLarge!
-                  .copyWith(fontWeight: FontWeight.w700),
+              style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                  fontSize: Dimensions.font12(context),
+                  fontWeight: FontWeight.w700),
               overflow: TextOverflow.ellipsis,
               textAlign: TextAlign.start,
             ),

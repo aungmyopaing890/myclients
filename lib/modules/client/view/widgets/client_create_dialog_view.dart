@@ -77,7 +77,7 @@ class _NewDialogState extends State<NewDialog> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               Text(
-                'Create a new Client',
+                widget.client == null ? 'Create a new Client' : "Edit Client",
                 textAlign: TextAlign.start,
                 style: Theme.of(context).textTheme.titleMedium!.copyWith(
                       color: MasterColors.black,
@@ -102,7 +102,9 @@ class _NewDialogState extends State<NewDialog> {
     return Dialog(
       backgroundColor: MasterColors.white,
       child: Container(
-        width: Dimensions.screenWidth(context) * 0.3,
+        width: Utils.isTablet(context)
+            ? Dimensions.screenWidth(context) * 0.4
+            : Dimensions.screenWidth(context) * 0.3,
         decoration: BoxDecoration(
             color: MasterColors.appBarTitleColor,
             borderRadius: BorderRadius.circular(MasterConfig.borderRadious)),
@@ -176,7 +178,11 @@ class _NewDialogState extends State<NewDialog> {
                       hasShadow: false,
                       width: Dimensions.height40(context) * 3,
                       height: Dimensions.height40(context),
-                      titleText: isPersonalDetails ? "Continue" : "Create",
+                      titleText: isPersonalDetails
+                          ? "Continue"
+                          : widget.client == null
+                              ? "Create"
+                              : "Update",
                       titleTextColor: MasterColors.white,
                       onPressed: () {
                         if (isPersonalDetails && isPersonalComplete) {
