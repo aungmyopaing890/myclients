@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:myclients/modules/client/core/provider/client_provider.dart';
 import 'package:myclients/modules/client/core/repository/client_repository.dart';
 import 'package:myclients/modules/client/core/view_object/client.dart';
+import 'package:myclients/modules/client/view/client_table_list_view.dart';
 import 'package:myclients/modules/client/view/widgets/client_create_dialog_view.dart';
 import 'package:myclients/modules/client/view/widgets/client_search_widget.dart';
 import 'package:myclients/modules/common/core/utils/dimesions.dart';
@@ -69,6 +70,7 @@ class _HomeScreenState extends State<HomeScreen>
               lazy: false,
               create: (BuildContext context) {
                 clientProvider = ClientProvider(repository: clientRepository);
+                clientProvider.loadDataList();
                 return clientProvider;
               }),
         ],
@@ -117,7 +119,8 @@ class _HomeScreenState extends State<HomeScreen>
                                 });
                           }),
                     ],
-                  )
+                  ),
+                  const ClientTableView()
                 ],
               ),
             ),

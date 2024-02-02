@@ -19,6 +19,10 @@ class ClientVO extends MasterObject<ClientVO> {
     return id ?? '';
   }
 
+  String name() {
+    return "$firstName $lastName";
+  }
+
   @override
   ClientVO fromMap(dynamic dynamicData) {
     if (dynamicData != null) {
