@@ -7,8 +7,10 @@ import 'package:myclients/modules/common/core/utils/utils.dart';
 import 'package:provider/provider.dart';
 
 class ClientSearchWidget extends StatefulWidget {
-  const ClientSearchWidget({super.key, required this.searchController});
+  const ClientSearchWidget(
+      {super.key, required this.searchController, required this.funSetstate});
   final TextEditingController searchController;
+  final Function funSetstate;
 
   @override
   State<ClientSearchWidget> createState() => _ClientSearchWidgetState();
@@ -39,18 +41,28 @@ class _ClientSearchWidgetState extends State<ClientSearchWidget> {
         maxLines: null,
         controller: widget.searchController,
         onChanged: (String value) {
+          widget.funSetstate();
+
           debouncer.run(() {
             if (widget.searchController.text != '') {
               provider.searchClient(value);
-              setState(() {});
             }
+            setState(() {});
           });
         },
         style: Theme.of(context)
             .textTheme
             .titleMedium!
             .copyWith(color: MasterColors.black),
-        onTap: () async {},
+        onTap: () async {
+          widget.funSetstate();
+          debouncer.run(() {
+            if (widget.searchController.text != '') {
+              provider.searchClient(widget.searchController.text);
+            }
+            setState(() {});
+          });
+        },
         decoration: InputDecoration(
           fillColor: MasterColors.white,
           contentPadding: EdgeInsets.symmetric(

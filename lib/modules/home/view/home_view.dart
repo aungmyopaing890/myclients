@@ -99,6 +99,9 @@ class _HomeScreenState extends State<HomeScreen>
                     children: [
                       ClientSearchWidget(
                         searchController: searchController,
+                        funSetstate: () {
+                          setState(() {});
+                        },
                       ),
                       ButtonWidgetRoundCorner(
                           colorData: MasterColors.mainColor,

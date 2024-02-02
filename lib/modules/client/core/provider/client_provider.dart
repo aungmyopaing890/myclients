@@ -51,7 +51,7 @@ class ClientProvider extends ChangeNotifier {
     searchData.clear();
     if (hasData) {
       for (var client in data) {
-        if (client.name().contains(keyword)) {
+        if (client.name().toLowerCase().contains(keyword.toLowerCase())) {
           searchData.add(client);
         }
       }
