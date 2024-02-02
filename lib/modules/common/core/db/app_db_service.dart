@@ -6,6 +6,8 @@ import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sembast/sembast.dart';
 import 'package:sembast/sembast_io.dart';
+import 'package:sembast_web/sembast_web.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 
 class AppDataBaseService {
   AppDataBaseService._internal();
@@ -25,10 +27,16 @@ class AppDataBaseService {
   }
 
   Future<dynamic> _openDatabase() async {
-    final Directory appDocumentDir = await getApplicationDocumentsDirectory();
-    await appDocumentDir.create(recursive: true);
-    final String dbPath = join(appDocumentDir.path, MasterConfig.app_db_name);
-    final Database database = await databaseFactoryIo.openDatabase(dbPath);
+    late Database database;
+    if (kIsWeb) {
+      database =
+          await databaseFactoryWeb.openDatabase(MasterConfig.app_db_name);
+    } else {
+      final Directory appDocumentDir = await getApplicationDocumentsDirectory();
+      await appDocumentDir.create(recursive: true);
+      final String dbPath = join(appDocumentDir.path, MasterConfig.app_db_name);
+      database = await databaseFactoryIo.openDatabase(dbPath);
+    }
     _dbOpenCompleter!.complete(database);
   }
 }

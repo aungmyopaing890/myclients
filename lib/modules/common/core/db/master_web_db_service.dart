@@ -5,12 +5,18 @@ import 'package:myclients/modules/common/core/db/app_db_service.dart';
 import 'package:myclients/modules/common/core/view_object/map_object.dart';
 import 'package:myclients/modules/common/core/view_object/master_object.dart';
 import 'package:sembast/sembast.dart';
+import 'package:sembast_web/sembast_web.dart';
 
 abstract class MasterDbService<T extends MasterObject<T>> {
   String sortingKey = 'sort';
   late T obj;
 
   late StoreRef<String?, dynamic> dao;
+  var store = intMapStoreFactory.store();
+  var factory = databaseFactoryWeb;
+
+  // Open the database
+  // var db = await factory.openDatabase('test');
 
   Future<Database> get db async => await AppDataBaseService.instance.database;
 
@@ -23,7 +29,7 @@ abstract class MasterDbService<T extends MasterObject<T>> {
   String getStoreName();
 
   dynamic getPrimaryKey(T object);
-  Filter getFilter(String id);
+  Filter getFilter(String guid);
 
   Future<dynamic> insert(T object) async =>
       await dao.record(object.getPrimaryKey()).put(await db, obj.toMap(object));

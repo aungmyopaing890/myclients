@@ -19,12 +19,12 @@ class _AppLoadingScreenState extends State<AppLoadingScreen>
     with TickerProviderStateMixin {
   Future<dynamic> callDateFunction() async {
     Future.delayed(const Duration(seconds: 2));
-
     context.go(RoutePaths.home);
   }
 
   @override
   Widget build(BuildContext context) {
+    callDateFunction();
     return Scaffold(
       backgroundColor: MasterColors.appBackgorundColor,
       body: Center(
