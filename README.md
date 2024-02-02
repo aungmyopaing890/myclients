@@ -29,71 +29,71 @@
 <h1> ios mobileScreens </h1>
 
 1.Home<br><br>
-![Home Search](screen_shoots/ios/home.jpg)<br>
+![Home Search](screen_shoots/ios/home.png)<br>
 
 2.Home Search<br><br>
-![Home Search](screen_shoots/ios/home_search.jpg)<br>
+![Home Search](screen_shoots/ios/home_search.png)<br>
 
 3.Client Create<br><br>
-![Client Create](screen_shoots/ios/client_create.jpg)<br>
+![Client Create](screen_shoots/ios/client_create.png)<br>
 
 4.Client Create 2<br><br>
-![Client Create 2](screen_shoots/ios/client_create_2.jpg)<br>
+![Client Create 2](screen_shoots/ios/client_create_2.png)<br>
 
 5.Client Edit<br><br>
-![Client Edit](screen_shoots/ios/client_edit_dialog.jpg)<br>
+![Client Edit](screen_shoots/ios/client_edit_dialog.png)<br>
 
 6.Client Edit 2<br><br>
-![Client Edit 2](screen_shoots/ios/client_edit_dialog_2.jpg)<br>
+![Client Edit 2](screen_shoots/ios/client_edit_dialog_2.png)<br>
 
 7.Delete Confirm<br><br>
-![Delete Confirm](screen_shoots/ios/client_delete_confirm.jpg)<br>
+![Delete Confirm](screen_shoots/ios/client_delete_confirm.png)<br>
 
 
 
 <h1>Websites Screens </h1>
 
 1.Home<br><br>
-![Home Search](screen_shoots/web/home.jpg)<br>
+![Home Search](screen_shoots/web/home.png)<br>
 
 2.Home Search<br><br>
-![Home Search](screen_shoots/web/home_search.jpg)<br>
+![Home Search](screen_shoots/web/home_search.png)<br>
 
 3.Client Create<br><br>
-![Client Create](screen_shoots/web/client_create.jpg)<br>
+![Client Create](screen_shoots/web/client_create.png)<br>
 
 4.Client Create 2<br><br>
-![Client Create 2](screen_shoots/web/client_create_2.jpg)<br>
+![Client Create 2](screen_shoots/web/client_create_2.png)<br>
 
 5.Client Edit<br><br>
-![Client Edit](screen_shoots/web/client_edit_dialog.jpg)<br>
+![Client Edit](screen_shoots/web/client_edit_dialog.png)<br>
 
 6.Client Edit 2<br><br>
-![Client Edit 2](screen_shoots/web/client_edit_dialog_2.jpg)<br>
+![Client Edit 2](screen_shoots/web/client_edit_dialog_2.png)<br>
 
 7.Delete Confirm<br><br>
-![Delete Confirm](screen_shoots/web/client_delete_confirm.jpg)<br>
+![Delete Confirm](screen_shoots/web/client_delete_confirm.png)<br>
 
 
 <h1>Andriod mobile tablet Screens </h1>
 
 1.Home<br><br>
-![Home Search](screen_shoots/tablet/home.jpg)<br>
+![Home Search](screen_shoots/tablet/home.png)<br>
 
 2.Home Search<br><br>
-![Home Search](screen_shoots/tablet/home_search.jpg)<br>
+![Home Search](screen_shoots/tablet/home_search.png)<br>
 
 3.Client Create<br><br>
-![Client Create](screen_shoots/tablet/client_create.jpg)<br>
+![Client Create](screen_shoots/tablet/client_create.png)<br>
 
 4.Client Create 2<br><br>
-![Client Create 2](screen_shoots/tablet/client_create_2.jpg)<br>
+![Client Create 2](screen_shoots/tablet/client_create_2.png)<br>
 
 5.Client Edit<br><br>
-![Client Edit](screen_shoots/tablet/client_edit_dialog.jpg)<br>
+![Client Edit](screen_shoots/tablet/client_edit_dialog.png)<br>
 
 6.Client Edit 2<br><br>
-![Client Edit 2](screen_shoots/tablet/client_edit_dialog_2.jpg)<br>
+![Client Edit 2](screen_shoots/tablet/client_edit_dialog_2.png)<br>
 
 7.Delete Confirm<br><br>
 ![Delete Confirm](screen_shoots/tablet/client_delete_confirm.jpg)<br>
