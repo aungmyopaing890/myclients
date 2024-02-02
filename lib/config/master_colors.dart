@@ -45,9 +45,9 @@ class MasterColors {
   ///
   /// Primary Color
   ///
-  static Color mainColor = const Color(0xFFFF6604);
-  static Color activeColor = const Color(0xFFFF6604);
-  static Color inActiveColor = const Color(0xFFFFB381);
+  static Color mainColor = const Color(0xFF335FFF);
+  static Color activeColor = mainColor;
+  static Color inActiveColor = mainColor.withOpacity(0.2);
 
   //Back ground Color
   static Color appBackgorundColor = const Color(0xFFF1F4F7);
