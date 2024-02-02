@@ -1,16 +1,22 @@
-# myclients
+# My Clients
 
-A new Flutter project.
+1.Home<br><br>
+![Home](screen_shoots/mobile/home.jpg)<br>
 
-## Getting Started
+2.Home Search<br><br>
+![Home Search](screen_shoots/mobile/home_search.jpg)<br>
 
-This project is a starting point for a Flutter application.
+3.Client Create<br><br>
+![Client Create](screen_shoots/mobile/client_create.jpg)<br>
 
-A few resources to get you started if this is your first Flutter project:
+4.Client Create 2<br><br>
+![Client Create 2](screen_shoots/mobile/client_create_2.jpg)<br>
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+5.Client Edit<br><br>
+![Client Edit](screen_shoots/mobile/client_dialog_edit.jpg)<br>
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+6.Client Edit 2<br><br>
+![Client Edit 2](screen_shoots/mobile/client_edit_dialog_2.jpg)<br>
+
+7.Delete Confirm<br><br>
+![Delete Confirm](screen_shoots/mobile/client_delete_confrim.jpg)<br>
