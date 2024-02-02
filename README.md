@@ -3,7 +3,7 @@
 <h1>Andriod mobile phone Screens </h1>
 
 1.Home<br><br>
-![Home Search](screen_shoots/mobile/home_search.jpg)<br>
+![Home Search](screen_shoots/mobile/home.jpg)<br>
 
 2.Home Search<br><br>
 ![Home Search](screen_shoots/mobile/home_search.jpg)<br>
