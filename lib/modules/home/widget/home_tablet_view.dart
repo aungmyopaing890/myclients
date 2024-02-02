@@ -41,7 +41,7 @@ class _HomeTabletViewState extends State<HomeTabletView> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               ClientSearchWidget(
-                width: Dimensions.screenWidth(context) * 0.6,
+                width: Dimensions.screenWidth(context) * 0.5,
                 searchController: widget.searchController,
                 funSetstate: () {
                   setState(() {});

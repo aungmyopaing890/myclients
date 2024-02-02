@@ -75,6 +75,10 @@ class _HomeScreenState extends State<HomeScreen>
         child: Scaffold(
           key: scaffoldKey,
           backgroundColor: MasterColors.appBackgorundColor,
+          appBar: AppBar(
+            toolbarHeight: 0,
+            backgroundColor: MasterColors.appBackgorundColor,
+          ),
           body: SingleChildScrollView(
             child: Responsive(
                 desktop: HomeDesktopView(
