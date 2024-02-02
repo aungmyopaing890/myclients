@@ -122,6 +122,7 @@ class MasterTextFieldWidget extends StatelessWidget {
                 if (value == "") {
                   return errorString;
                 }
+
                 return null;
               },
               initialValue: initialValue,

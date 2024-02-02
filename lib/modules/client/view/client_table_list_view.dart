@@ -6,10 +6,26 @@ import 'package:myclients/modules/client/view/widgets/client_row.dart';
 import 'package:myclients/modules/common/core/utils/dimesions.dart';
 import 'package:provider/provider.dart';
 
-class ClientTableView extends StatelessWidget {
+class ClientTableView extends StatefulWidget {
   const ClientTableView({
     Key? key,
+    required this.isSearch,
+    required this.searchController,
   }) : super(key: key);
+  final bool isSearch;
+  final TextEditingController searchController;
+
+  @override
+  State<ClientTableView> createState() => _ClientTableViewState();
+}
+
+class _ClientTableViewState extends State<ClientTableView> {
+  bool isSearch = false;
+  @override
+  void initState() {
+    isSearch = widget.searchController.text != "";
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,11 +44,17 @@ class ClientTableView extends StatelessWidget {
                     scrollDirection: Axis.vertical,
                     physics: const BouncingScrollPhysics(),
                     shrinkWrap: true,
-                    itemCount: pro.dataLength,
+                    itemCount: widget.searchController.text != ""
+                        ? pro.searchDataLength
+                        : pro.dataLength,
                     itemBuilder: (context, index) {
                       return ClientRowWidget(
-                        isLast: pro.dataLength == index + 1,
-                        client: pro.getListIndexOf(index),
+                        isLast: widget.searchController.text != ""
+                            ? pro.searchDataLength == index + 1
+                            : pro.dataLength == index + 1,
+                        client: widget.searchController.text != ""
+                            ? pro.getSearhListIndexOf(index)
+                            : pro.getListIndexOf(index),
                       );
                     }));
           }),

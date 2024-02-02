@@ -21,6 +21,11 @@ class MasterConfig {
   static const String app_db_name = 'myaclient.db';
 
   ///
+  /// Database Name
+
+  static const String is_json_inserted_to_db = 'is_json_inserted_to_db';
+
+  ///
   /// Font Style
   static const String default_font_family = 'Mukta';
 

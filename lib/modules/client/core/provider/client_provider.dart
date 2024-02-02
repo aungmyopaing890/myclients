@@ -1,10 +1,14 @@
 // ignore_for_file: use_build_context_synchronously, unnecessary_null_comparison
 
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:myclients/config/master_config.dart';
 import 'package:myclients/modules/client/core/repository/client_repository.dart';
 import 'package:myclients/modules/client/core/view_object/client.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:uuid/uuid.dart';
 
 class ClientProvider extends ChangeNotifier {
@@ -40,12 +44,61 @@ class ClientProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  List<ClientVO> searchData = [];
+
+  Future<void> searchClient(String keyword) async {
+    isLoading = true;
+    searchData.clear();
+    if (hasData) {
+      for (var client in data) {
+        if (client.name().contains(keyword)) {
+          searchData.add(client);
+        }
+      }
+    }
+    isLoading = false;
+    notifyListeners();
+  }
+
+  bool get hasSerchData {
+    return searchDataLength > 0;
+  }
+
+  int get searchDataLength {
+    return searchData.length;
+  }
+
+  ClientVO getSearhListIndexOf(int index) {
+    if (searchData != null && searchData.isNotEmpty && dataLength > index) {
+      return searchData[index];
+    } else {
+      return ClientVO();
+    }
+  }
+
   Future<void> insert(ClientVO clientVO) async {
     clientVO.id = const Uuid().v4();
     await _repository.insert(clientVO);
     await loadDataList();
     notifyListeners();
   }
+
+  Future<void> insertJson() async {
+    final SharedPreferences shared = await SharedPreferences.getInstance();
+    bool isInserted =
+        shared.getBool(MasterConfig.is_json_inserted_to_db) ?? false;
+    if (!isInserted) {
+      for (var e in await _loadFromAsset()) {
+        e.id = const Uuid().v4();
+        await _repository.insert(e);
+      }
+      shared.setBool(MasterConfig.is_json_inserted_to_db, true);
+    }
+    notifyListeners();
+  }
+
+  Future<List<ClientVO>> _loadFromAsset() async => ClientVO().fromMapList(
+      json.decode(await rootBundle.loadString('assets/clients.json')));
 
   Future<dynamic> delete(String id) async {
     var res = await _repository.delete(id);

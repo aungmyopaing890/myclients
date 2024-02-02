@@ -1,13 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:myclients/config/master_colors.dart';
 import 'package:myclients/config/master_config.dart';
+import 'package:myclients/modules/client/core/provider/client_provider.dart';
 import 'package:myclients/modules/common/core/utils/dimesions.dart';
+import 'package:myclients/modules/common/core/utils/utils.dart';
+import 'package:provider/provider.dart';
 
-class ClientSearchWidget extends StatelessWidget {
+class ClientSearchWidget extends StatefulWidget {
   const ClientSearchWidget({super.key, required this.searchController});
   final TextEditingController searchController;
+
+  @override
+  State<ClientSearchWidget> createState() => _ClientSearchWidgetState();
+}
+
+class _ClientSearchWidgetState extends State<ClientSearchWidget> {
+  final debouncer = Debouncer(milliseconds: 500);
+
   @override
   Widget build(BuildContext context) {
+    final ClientProvider provider = Provider.of<ClientProvider>(context);
     return Container(
       width: Dimensions.screenWidth(context) * 0.3,
       alignment: Alignment.center,
@@ -25,7 +37,15 @@ class ClientSearchWidget extends StatelessWidget {
         textAlign: TextAlign.start,
         textAlignVertical: TextAlignVertical.center,
         maxLines: null,
-        controller: searchController,
+        controller: widget.searchController,
+        onChanged: (String value) {
+          debouncer.run(() {
+            if (widget.searchController.text != '') {
+              provider.searchClient(value);
+              setState(() {});
+            }
+          });
+        },
         style: Theme.of(context)
             .textTheme
             .titleMedium!

@@ -108,6 +108,7 @@ class _HomeScreenState extends State<HomeScreen>
                           titleText: "Create new client",
                           titleTextColor: MasterColors.white,
                           onPressed: () {
+                            // clientProvider.insertJson();
                             showDialog<dynamic>(
                                 context: context,
                                 builder: (BuildContext context) {
@@ -120,7 +121,10 @@ class _HomeScreenState extends State<HomeScreen>
                           }),
                     ],
                   ),
-                  const ClientTableView()
+                  ClientTableView(
+                    searchController: searchController,
+                    isSearch: searchController.text != "",
+                  )
                 ],
               ),
             ),
