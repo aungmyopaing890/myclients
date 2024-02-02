@@ -94,7 +94,3 @@
 
 6.Client Edit 2<br><br>
 ![Client Edit 2](screen_shoots/tablet/client_edit_dialog_2.png)<br>
-
-7.Delete Confirm<br><br>
-![Delete Confirm](screen_shoots/tablet/client_delete_confirm.jpg)<br>
-
