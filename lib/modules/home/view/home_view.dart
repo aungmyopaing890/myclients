@@ -3,11 +3,13 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:myclients/config/master_config.dart';
 import 'package:myclients/modules/client/core/provider/client_provider.dart';
 import 'package:myclients/modules/client/core/repository/client_repository.dart';
 import 'package:myclients/modules/client/core/view_object/client.dart';
+import 'package:myclients/modules/client/view/widgets/client_create_dialog_view.dart';
+import 'package:myclients/modules/client/view/widgets/client_search_widget.dart';
 import 'package:myclients/modules/common/core/utils/dimesions.dart';
+import 'package:myclients/modules/common/views/button_widget_with_round_corner.dart';
 import 'package:myclients/modules/common/views/dialog/confirm_dialog_view.dart';
 import 'package:myclients/config/master_colors.dart';
 import 'package:provider/provider.dart';
@@ -24,6 +26,7 @@ class _HomeScreenState extends State<HomeScreen>
     with TickerProviderStateMixin, WidgetsBindingObserver {
   late Animation<double> animation;
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+  TextEditingController searchController = TextEditingController();
 
   @override
   void initState() {
@@ -72,36 +75,51 @@ class _HomeScreenState extends State<HomeScreen>
         child: Scaffold(
           key: scaffoldKey,
           backgroundColor: MasterColors.appBackgorundColor,
-          body: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                InkWell(
-                  onTap: () async {
-                    await clientProvider.insert(ClientVO(
-                        id: "test11",
-                        firstName: "AA",
-                        lastName: "Aung",
-                        phoneNumber: "0999048304",
-                        email: "aung@gmail.com"));
-                  },
-                  child: Container(
-                    padding: EdgeInsets.all(Dimensions.height10(context)),
-                    decoration: BoxDecoration(
-                        color: MasterColors.buttonColor,
-                        borderRadius:
-                            BorderRadius.circular(MasterConfig.borderRadious)),
-                    child: const Text(
-                      "data",
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.normal,
+          body: SingleChildScrollView(
+            child: Container(
+              padding: EdgeInsets.all(Dimensions.height30(context)),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                      margin:
+                          EdgeInsets.only(bottom: Dimensions.height10(context)),
+                      height: Dimensions.height30(context),
+                      child: Text(
+                        "Clients",
+                        style: Theme.of(context)
+                            .textTheme
+                            .headlineMedium!
+                            .copyWith(fontWeight: FontWeight.w700),
+                      )),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      ClientSearchWidget(
+                        searchController: searchController,
                       ),
-                    ),
-                  ),
-                )
-              ],
+                      ButtonWidgetRoundCorner(
+                          colorData: MasterColors.mainColor,
+                          hasShadow: false,
+                          width: Dimensions.height40(context) * 3,
+                          height: Dimensions.height40(context),
+                          titleText: "Create new client",
+                          titleTextColor: MasterColors.white,
+                          onPressed: () {
+                            showDialog<dynamic>(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return ClientCreateDialogView(
+                                    onPressed: (ClientVO client) {
+                                      clientProvider.insert(client);
+                                    },
+                                  );
+                                });
+                          }),
+                    ],
+                  )
+                ],
+              ),
             ),
           ),
         ),

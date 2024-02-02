@@ -5,6 +5,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:myclients/modules/client/core/repository/client_repository.dart';
 import 'package:myclients/modules/client/core/view_object/client.dart';
+import 'package:uuid/uuid.dart';
 
 class ClientProvider extends ChangeNotifier {
   ClientProvider({
@@ -40,6 +41,7 @@ class ClientProvider extends ChangeNotifier {
   }
 
   Future<void> insert(ClientVO clientVO) async {
+    clientVO.id = const Uuid().v4();
     await _repository.insert(clientVO);
     await loadDataList();
     notifyListeners();

@@ -30,7 +30,7 @@ class MasterColors {
   ///
   /// text Color
   ///
-  static Color? textColor1 = secondary900;
+  static Color? textColor1 = secondary30;
   static Color? textColor2 = mainColor;
   static Color? textColor3 = const Color(0xFF4D4D4D);
   static Color? textColor4 = Colors.black38;
@@ -50,7 +50,7 @@ class MasterColors {
   static Color inActiveColor = const Color(0xFFFFB381);
 
   //Back ground Color
-  static Color appBackgorundColor = const Color(0xFFF5F5F5);
+  static Color appBackgorundColor = const Color(0xFFF1F4F7);
   static Color appBarBackgorundColor = const Color(0xFFFF6604);
 
   ///

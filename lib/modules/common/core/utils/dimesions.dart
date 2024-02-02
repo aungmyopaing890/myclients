@@ -7,6 +7,7 @@ class Dimensions {
       MediaQuery.sizeOf(context).width;
   static double pageView(BuildContext context) => screenHeight(context) / 2.23;
 
+  static double height5(BuildContext context) => height10(context) / 2;
   static double height10(BuildContext context) => screenHeight(context) / 71.5;
   static double height20(BuildContext context) => screenHeight(context) / 35.75;
   static double height30(BuildContext context) => screenHeight(context) / 23.83;
