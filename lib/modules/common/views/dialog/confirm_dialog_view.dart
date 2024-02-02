@@ -70,22 +70,23 @@ class NewDialog extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             headerWidget,
-            Container(
-              alignment: Alignment.center,
-              padding: EdgeInsets.only(
-                  top: Dimensions.height10(context),
-                  bottom: Dimensions.height15(context)),
-              child: Text(
-                widget.description!,
-                maxLines: 4,
-                overflow: TextOverflow.ellipsis,
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                      color: MasterColors.textColor3,
-                      fontWeight: FontWeight.w400,
-                    ),
+            if (widget.description != null)
+              Container(
+                alignment: Alignment.center,
+                padding: EdgeInsets.only(
+                    top: Dimensions.height10(context),
+                    bottom: Dimensions.height15(context)),
+                child: Text(
+                  widget.description!,
+                  maxLines: 4,
+                  overflow: TextOverflow.ellipsis,
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                        color: MasterColors.textColor3,
+                        fontWeight: FontWeight.w400,
+                      ),
+                ),
               ),
-            ),
             Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
               ButtonWidgetRoundCorner(
                   colorData: Colors.grey[50]!,

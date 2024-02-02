@@ -9,21 +9,26 @@ import 'package:myclients/modules/common/views/button_widget_with_round_corner.d
 import 'package:myclients/modules/common/views/dialog/warning_dialog_view.dart';
 import 'package:myclients/modules/common/views/textfield_widget_with_icon.dart';
 
-class ClientCreateDialogView extends StatefulWidget {
-  const ClientCreateDialogView({
+class ClientDialogView extends StatefulWidget {
+  const ClientDialogView({
     Key? key,
     required this.onPressed,
+    this.isEdit = false,
+    this.client,
   }) : super(key: key);
   final Function onPressed;
+  final ClientVO? client;
+  final bool isEdit;
   @override
-  State<ClientCreateDialogView> createState() => _LogoutDialogState();
+  State<ClientDialogView> createState() => _LogoutDialogState();
 }
 
-class _LogoutDialogState extends State<ClientCreateDialogView> {
+class _LogoutDialogState extends State<ClientDialogView> {
   @override
   Widget build(BuildContext context) {
     return NewDialog(
       onPressed: widget.onPressed,
+      client: widget.client,
     );
   }
 }
@@ -32,8 +37,10 @@ class NewDialog extends StatefulWidget {
   const NewDialog({
     Key? key,
     required this.onPressed,
+    this.client,
   }) : super(key: key);
   final Function onPressed;
+  final ClientVO? client;
 
   @override
   State<NewDialog> createState() => _NewDialogState();
@@ -47,6 +54,18 @@ class _NewDialogState extends State<NewDialog> {
   bool isPersonalDetails = true;
   bool isPersonalComplete = false;
   bool isContactComplete = false;
+  @override
+  void initState() {
+    if (widget.client != null) {
+      isPersonalComplete = true;
+      isContactComplete = true;
+      firstname.text = widget.client?.firstName ?? "";
+      lastname.text = widget.client?.lastName ?? "";
+      phoneNumber.text = widget.client?.phoneNumber ?? "";
+      email.text = widget.client?.email ?? "";
+    }
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -172,10 +191,12 @@ class _NewDialogState extends State<NewDialog> {
                                 context, "Invalid Email Address!");
                           } else {
                             widget.onPressed(ClientVO(
+                                id: widget.client?.id ?? "",
                                 firstName: firstname.text,
                                 lastName: lastname.text,
                                 phoneNumber: phoneNumber.text,
                                 email: email.text));
+
                             context.pop();
                           }
                         }

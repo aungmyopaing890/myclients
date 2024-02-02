@@ -115,7 +115,7 @@ class _HomeScreenState extends State<HomeScreen>
                             showDialog<dynamic>(
                                 context: context,
                                 builder: (BuildContext context) {
-                                  return ClientCreateDialogView(
+                                  return ClientDialogView(
                                     onPressed: (ClientVO client) {
                                       clientProvider.insert(client);
                                     },

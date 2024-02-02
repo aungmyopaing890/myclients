@@ -3,6 +3,7 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:myclients/config/master_config.dart';
@@ -83,6 +84,13 @@ class ClientProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  Future<void> update(ClientVO clientVO) async {
+    await _repository.update(clientVO);
+    BotToast.showText(text: "Update success");
+    await loadDataList();
+    notifyListeners();
+  }
+
   Future<void> insertJson() async {
     final SharedPreferences shared = await SharedPreferences.getInstance();
     bool isInserted =
@@ -102,6 +110,8 @@ class ClientProvider extends ChangeNotifier {
 
   Future<dynamic> delete(String id) async {
     var res = await _repository.delete(id);
+    BotToast.showText(text: "Delete success");
+
     notifyListeners();
     loadDataList();
     return res;
